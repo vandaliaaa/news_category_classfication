@@ -15,7 +15,7 @@ df_titles = pd.DataFrame()
 
 
 #모든 뉴스 헤드라인 카테고리 가져옴
-for i in range(6):
+for i in range(2,4):
     #주소설정
     #주소는 맨뒤에 100~106까지 반복됨
     url = 'https://news.naver.com/section/10{}'.format(i)
@@ -53,8 +53,8 @@ df_titles.info()
 print(df_titles['category'].value_counts())
 
 # CSV 파일로 저장 (파일명: naver_headline_news_YYYYMMDD.csv)
-#datetime.datetime.now() :현제 시간을 알려줌
-df_titles.to_csv('./crawlind_data/naver_headline_news_{}.csv'.format(
+#datetime.datetime.now() :현재 시간을 알려줌
+df_titles.to_csv('./crawling_data/naver_headline_news_2_3{}.csv'.format(
     datetime.datetime.now().strftime('%Y%m%d')), index=False)
 
 
