@@ -28,7 +28,7 @@ service = ChromeService(executable_path=ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service, options=options)
 
 url = 'https://news.naver.com/section/100'#정치주소
-#url = 'https://news.naver.com/section/101'@경제주소
+#url = 'https://news.naver.com/section/101'#경제주소
 driver.get(url)#브라우저 띄우기
 
 #버튼 생성이 될때까지 기다리는 딜레이
