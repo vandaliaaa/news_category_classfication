@@ -27,14 +27,17 @@ options.add_argument('lang=ko_KR')
 service = ChromeService(executable_path=ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service, options=options)
 
-url = 'https://news.naver.com/section/100'
+url = 'https://news.naver.com/section/100'#정치주소
+#url = 'https://news.naver.com/section/101'@경제주소
 driver.get(url)#브라우저 띄우기
 
 #버튼 생성이 될때까지 기다리는 딜레이
 time.sleep(1)
 
 #버튼 더보기 주소
-button_xpath = '//*[@id="newsct"]/div[4]/div/div[2]'
+button_xpath = '//*[@id="newsct"]/div[4]/div/div[2]'#정치 주소
+#button_xpath = '//*[@id="newsct"]/div[5]/div/div[2]'#경제 주소
+
 
 #15번 정도 누르기
 for i in range(15):
@@ -46,7 +49,8 @@ for i in range(15):
 #사이트 규칙 찾은 후 데이터 수집
 for i in range(1,98):
     for j in range(1,7):
-        title_xpath = '//*[@id="newsct"]/div[4]/div/div[1]/div[{}]/ul/li[{}]/div/div/div[2]/a/strong'.format(i,j)
+        title_xpath = '//*[@id="newsct"]/div[4]/div/div[1]/div[{}]/ul/li[{}]/div/div/div[2]/a/strong'.format(i,j)#정치 주소
+        #title_xpath = '//*[@id="newsct"]/div[5]/div/div[1]/div[{}]/ul/li[{}]/div/div/div[2]/a/strong'.format(i,j)#경제 주소
         try:
             title = driver.find_element(By.XPATH, title_xpath).text
             #print(title)
@@ -59,7 +63,8 @@ for i in range(1,98):
 
     # 데이터프레임 생성 (컬럼: 제목, 카테고리)
     df_section_titles = pd.DataFrame(titles, columns=['titles'])
-    df_section_titles['category'] = category[0]
+    df_section_titles['category'] = category[0]#경제
+    #df_section_titles['category'] = category[1]#정치
 
     # 최종 데이터프레임에 카테고리별 뉴스 제목 추가
     df_titles = pd.concat([df_titles, df_section_titles], axis='rows', ignore_index=True)
@@ -73,11 +78,17 @@ print(df_titles['category'].value_counts())
 
 # CSV 파일로 저장 (파일명: naver_headline_news_YYYYMMDD.csv)
 #datetime.datetime.now() :현재 시간을 알려줌
-df_titles.to_csv('./crawling_data/KGW_naver_headline_news{}.csv'.format(
+
+df_titles.to_csv('./crawling_data/Politics_naver_headline_news{}.csv'.format(
     datetime.datetime.now().strftime('%Y%m%d')), index=False)
+
+# df_titles.to_csv('./crawling_data/Economic_naver_headline_news{}.csv'.format(
+#     datetime.datetime.now().strftime('%Y%m%d')), index=False)
 
 
 time.sleep(3)
 
 #driver.close()#브라우저 닫기
+
+
 
