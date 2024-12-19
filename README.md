@@ -1,3 +1,5 @@
-python 3.10<br><br>
-폴더 구조<br>
-proj - crawlind_data
+
+python 3.10<br>
+폴더 구조 : 
+project crawling_data
+
