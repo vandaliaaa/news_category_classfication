@@ -11,6 +11,7 @@ category = ['Politics','Economic','Social','Culture','World','IT']
 
 #데이터 프레임 초기화
 df_titles = pd.DataFrame()
+#집에 가고 싶다
 
 
 
