@@ -60,4 +60,4 @@ print(df_titles['category'].value_counts())
 df_titles.to_csv('./crawling_data/naver_headline_news{}.csv'.format(
     datetime.datetime.now().strftime('%Y%m%d')), index=False)
 
-#데이터 수정
+#데이터 수정2
