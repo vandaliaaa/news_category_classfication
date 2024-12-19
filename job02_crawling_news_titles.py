@@ -13,7 +13,7 @@ import datetime
 
 #뉴스 제목 카테고리
 category = ['Politics','Economic','Social','Culture','World','IT']
-titles = []
+
 
 #데이터 프레임 초기화
 df_titles = pd.DataFrame()
@@ -39,12 +39,14 @@ button_xpath = '//*[@id="newsct"]/div[4]/div/div[2]'#정치 주소
 #button_xpath = '//*[@id="newsct"]/div[5]/div/div[2]'#경제 주소
 
 
-#15번 정도 누르기
+#버튼을 15번 정도 누르기
 for i in range(15):
     time.sleep(0.5)
     driver.find_element(By.XPATH, button_xpath).click()
 
 
+#txt로 변환된 타이틀을 한글제외 가공해서 넣을 list변수
+titles = []
 
 #사이트 규칙 찾은 후 데이터 수집
 for i in range(1,98):
