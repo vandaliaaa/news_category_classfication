@@ -54,15 +54,9 @@ print(df_titles.head())
 df_titles.info()
 print(df_titles['category'].value_counts())
 
+
 # CSV 파일로 저장 (파일명: naver_headline_news_YYYYMMDD.csv)
-
-
 #datetime.datetime.now() :현재 시간을 알려줌
 df_titles.to_csv('./crawling_data/naver_headline_news{}.csv'.format(
-
-
     datetime.datetime.now().strftime('%Y%m%d')), index=False)
-
-#crawlind_data 철자 오류.
-
 
