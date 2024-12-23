@@ -107,5 +107,5 @@ for i in range(len(df)):
     if df.loc[i, 'category'] in df.loc[i, 'predict']:
             df.loc[i, 'OX'] = 1
 print(df.OX.mean())
-
+#dd
 
