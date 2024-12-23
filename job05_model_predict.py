@@ -108,3 +108,4 @@ for i in range(len(df)):
             df.loc[i, 'OX'] = 1
 print(df.OX.mean())
 
+
